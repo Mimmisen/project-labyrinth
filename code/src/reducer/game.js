@@ -36,7 +36,7 @@ export const fetchGame = () => {
 		})
 			.then((res) => res.json())
 			.then((data) => dispatch(game.actions.setItem(data)))
-			.finally(dispatch(ui.actions.setLoading(false)))
+			.finally(() => dispatch(ui.actions.setLoading(false)))
 	}
 }
 
@@ -56,7 +56,7 @@ export const navigateGame = (type, direction) => {
 		})
 			.then((res) => res.json())
 			.then((data) => dispatch(game.actions.setItem(data)))
-			.finally(dispatch(ui.actions.setLoading(false)))
+			.finally(() => dispatch(ui.actions.setLoading(false)))
 	}
 }
 

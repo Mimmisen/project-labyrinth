@@ -9,34 +9,28 @@ const Background = styled.div`
 
 const ButtonController = styled.div`
 	display: grid;
-	grid-template-columns: repeat(3,1fr);
-	grid-template-rows: repeat(3,1fr);
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
 
-	background: #FDB100;
+	background: #fdb100;
 	border: solid 2px #000;
 	width: 120px;
 	height: 120px;
 	border-radius: 50%;
 	place-items: center;
-
-
 `
 
 const Btn = styled.button`
+	background: #f10db3;
+	border: none;
+	grid-area: ${(props) => props.position};
+	width: 80%;
+	height: 80%;
+	border: solid 2px #000;
 
-		background: #F10DB3 ;
-		border: none;
-		grid-area: ${props => props.position};
-		width: 80%;
-		height: 80%;
-		border: solid 2px #000;
-
-		&:disabled {
-			background: #C573AF;
-		}
-
-
-
+	&:disabled {
+		background: #c573af;
+	}
 `
 
 /*const Wrapper = styled.div`
@@ -88,8 +82,6 @@ const Labyrinth = () => {
 	const dispatch = useDispatch()
 	const items = useSelector((store) => store.game.items)
 
-
-
 	const onNavigate = (type, direction) => {
 		setSelect((prev) => [...prev, direction])
 		dispatch(navigateGame(type, direction))
@@ -99,49 +91,43 @@ const Labyrinth = () => {
 		dispatch(game.actions.restartGame())
 	}
 
-
-
-
 	const changeDirectionToIcon = (way) => {
 		if (way === 'North') {
-
 			return '⬆️'
 		} else if (way === 'South') {
-
 			return '⬇️'
 		} else if (way === 'East') {
 			return '➡️'
-		} else if (way === 'West'){
-			
+		} else if (way === 'West') {
 			return '⬅️'
 		}
 	}
 
 	const arrowStyle = (way) => {
 		if (way === 'North') {
-			return ('1/2')
+			return '1/2'
 		} else if (way === 'South') {
-			return ('3/2')
+			return '3/2'
 		} else if (way === 'East') {
-			return ('2/3')
-		} else if (way === 'West'){
-			return ('2/1')
+			return '2/3'
+		} else if (way === 'West') {
+			return '2/1'
+		}
 	}
-}
-	
 
+	const btnNavigator = ['North', 'East', 'South', 'West']
 
-	const btnNavigator = ['North', 'East', 'South', 'West'];
-
-	const filterDirection = items.actions.map(item => item.direction);
+	const filterDirection = items.actions.map((item) => item.direction)
 
 	const filterDisableBtn = () => {
+		const newOne = btnNavigator.filter((item) => !filterDirection.includes(item))
 
-		const newOne = btnNavigator.filter(item => !filterDirection.includes(item))
-		
-		return newOne.map(item => <Btn position={arrowStyle(item)} disabled>{changeDirectionToIcon(item)}</Btn>)
+		return newOne.map((item) => (
+			<Btn position={arrowStyle(item)} disabled>
+				{changeDirectionToIcon(item)}
+			</Btn>
+		))
 	}
-
 
 	const changeBG = () => {
 		switch (items.coordinates) {
@@ -178,26 +164,28 @@ const Labyrinth = () => {
 				return (
 					<div>
 						<p>{item.description}</p>
-
 					</div>
 				)
-			})} 
+			})}
 
-			<ButtonController >
-
+			<ButtonController>
 				{items.actions.map((item) => {
 					return (
 						<>
-							<Btn position={arrowStyle(item.direction)} onClick={() => onNavigate(item.type, item.direction)}>{changeDirectionToIcon(item.direction)}</Btn>
+							<Btn
+								position={arrowStyle(item.direction)}
+								onClick={() => onNavigate(item.type, item.direction)}
+							>
+								{changeDirectionToIcon(item.direction)}
+							</Btn>
 						</>
 					)
 				})}
 				{filterDisableBtn()}
-
 			</ButtonController>
 
 			<button type='button' onClick={onRestartClick}>
-				{items.coordinates === '1,3' ? 'play again' : 'restart game'}
+				{!items.actions.length ? 'play again' : 'restart game'}
 			</button>
 		</Background>
 	)
