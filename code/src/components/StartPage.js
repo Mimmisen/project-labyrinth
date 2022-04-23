@@ -23,7 +23,7 @@ import {
 } from './Styling'
 
 const StartPage = () => {
-	const [playMusic, setPlayMusic] = useState(true)
+	const [playMusic, setPlayMusic] = useState(false)
 	const items = useSelector((store) => store.game.items)
 	const dispatch = useDispatch()
 
@@ -52,7 +52,7 @@ const StartPage = () => {
 
 	return (
 		<MainWrapper>
-			<audio ref={audioPlaye} src={Music} autoPlay/>
+			<audio ref={audioPlaye} src={Music}/>
 			<ConsoleContainer>
 				<ConsoleFrame>{items ? <Labyrinth /> : <Game />}</ConsoleFrame>
 				<GoBackBtn type='button' onClick={onRestartClick}>

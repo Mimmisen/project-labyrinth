@@ -11,7 +11,6 @@ import BG7 from './img/bg7.png'
 import BG8 from './img/bg8.png'
 import arrow from './img/arrow.svg'
 import navigator from './img/navigator.svg'
-import music from'./img/music.mp3'
 
 
 import { Background, GameText, ButtonController, Btn, MiddeBtn, Modal, HistoryArrowContainer } from './Styling'
@@ -31,7 +30,6 @@ const Navigator = styled.img`
 const Labyrinth = () => {
 	const [select, setSelect] = useState([])
 	const [prevStep, setPrevStep] = useState('')
-	const [playMusic, setPlayMusic] = useState(false);
 	const dispatch = useDispatch()
 	const items = useSelector((store) => store.game.items)
 
@@ -113,20 +111,6 @@ const Labyrinth = () => {
 		`
 	}
 
-	// BACKGROUND MUSIC
-	const audioPlayer = useRef();
-
-	const controlMusic = () => {
-		   
-		    const prevValue = playMusic;
-		    setPlayMusic(!prevValue);	
-			
-			if (!prevValue) {
-				audioPlayer.current.play();
-			} else {
-				audioPlayer.current.pause();
-			}
-		}
 
 
 
@@ -166,8 +150,6 @@ const Labyrinth = () => {
 	}
 	return (
 		<Background background={changeBG()}>
-			<button onClick={() => controlMusic()}>Play</button>
-			<audio ref={audioPlayer} src={music}/>
 			<HistoryArrowContainer >{select.map(item => <HistoryArrow rotate={historyArrow(item)} src={arrow} alt='arrows to show history'/>)}</HistoryArrowContainer>
 			<Modal text={prevStep}>
 				You chose {prevStep} <Loadingspinner />
