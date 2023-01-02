@@ -46,17 +46,16 @@ const Game = () => {
         </GameTextHeader>
         <LabelName>Please, enter your name and press start</LabelName>
         <UsernameInput
-          type='text'
+          type="text"
           value={userName}
-          placeholder='Name of player..'
+          placeholder="Name of player.."
           onChange={onInputUserName}
           onKeyDown={(e) => e.key === 'Enter' && onChangeUserName()}
         />
         <StartButton
           onClick={onChangeUserName}
-          disabled={userName.length === 0}
-        >
-          <StartButtonImg src={StartBtn} alt='start game'></StartButtonImg>
+          disabled={userName.length === 0}>
+          <StartButtonImg src={StartBtn} alt="start game" />
         </StartButton>
       </UsernameInputContainer>
     </ConsoleContent>
