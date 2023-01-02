@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useRef } from "react";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useRef } from 'react';
 
-import game from "../reducer/game";
-import Game from "./Game";
-import Labyrinth from "./Labyrinth";
-import pause from "./img/pause.svg";
-import Polygon from "./img/Polygon.svg";
+import game from '../reducer/game';
+import Game from './Game';
+import Labyrinth from './Labyrinth';
+import pause from './img/pause.svg';
+import Polygon from './img/Polygon.svg';
 
-import ReturnBtn from "./img/returnbtn.svg";
-import Logotype from "./img/logo.png";
-import Music from "./img/music.mp3";
+import ReturnBtn from './img/returnbtn.svg';
+import Logotype from './img/logo.png';
+import Music from './img/music.mp3';
 import {
   MainWrapper,
   ConsoleContainer,
@@ -19,8 +19,8 @@ import {
   GoBackBtnImg,
   GoBackBtn,
   PlayBtn,
-  Logo,
-} from "./Styling";
+  Logo
+} from './Styling';
 
 const StartPage = () => {
   const [playMusic, setPlayMusic] = useState(false);

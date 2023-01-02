@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
-import ui from "../reducer/ui";
+import { createSlice } from '@reduxjs/toolkit';
+import ui from '../reducer/ui';
 
 const game = createSlice({
-  name: "game",
+  name: 'game',
   initialState: {
     items: null,
-    username: "",
+    username: ''
   },
   reducers: {
     setName: (store, action) => {
@@ -19,20 +19,20 @@ const game = createSlice({
 
     restartGame: (store) => {
       store.items = null;
-      store.username = "";
-    },
-  },
+      store.username = '';
+    }
+  }
 });
 
 export const fetchGame = () => {
   return (dispatch, getState) => {
     dispatch(ui.actions.setLoading(true));
-    fetch("https://labyrinth.technigo.io//start", {
-      method: "POST",
+    fetch('https://labyrinth.technigo.io//start', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ username: getState().game.username }),
+      body: JSON.stringify({ username: getState().game.username })
     })
       .then((res) => res.json())
       .then((data) => dispatch(game.actions.setItem(data)))
@@ -43,16 +43,16 @@ export const fetchGame = () => {
 export const navigateGame = (type, direction) => {
   return (dispatch, getState) => {
     dispatch(ui.actions.setLoading(true));
-    fetch("https://labyrinth.technigo.io//action", {
-      method: "POST",
+    fetch('https://labyrinth.technigo.io//action', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         username: getState().game.username,
         type,
-        direction,
-      }),
+        direction
+      })
     })
       .then((res) => res.json())
       .then((data) => dispatch(game.actions.setItem(data)))

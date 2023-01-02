@@ -1,5 +1,5 @@
-import styled from "styled-components/macro";
-import BG1 from "./img/bg1.png";
+import styled from 'styled-components/macro';
+import BG1 from './img/bg1.png';
 
 export const MainWrapper = styled.main`
   display: flex;
@@ -198,27 +198,27 @@ export const Btn = styled.button`
   justify-content: center;
   border: solid 2px #000;
   border-bottom: ${(props) =>
-    props.border === "North" ? " solid 2px #FFF" : ""};
-  border-top: ${(props) => (props.border === "South" ? " solid 2px #FFF" : "")};
-  border-left: ${(props) => (props.border === "East" ? " solid 2px #FFF" : "")};
+    props.border === 'North' ? ' solid 2px #FFF' : ''};
+  border-top: ${(props) => (props.border === 'South' ? ' solid 2px #FFF' : '')};
+  border-left: ${(props) => (props.border === 'East' ? ' solid 2px #FFF' : '')};
   border-right: ${(props) =>
-    props.border === "West" ? " solid 2px #FFF" : ""};
+    props.border === 'West' ? ' solid 2px #FFF' : ''};
   border-top-left-radius: ${(props) =>
-    props.border === "North" ? " 5px " : ""};
+    props.border === 'North' ? ' 5px ' : ''};
   border-top-right-radius: ${(props) =>
-    props.border === "North" ? " 5px " : ""};
+    props.border === 'North' ? ' 5px ' : ''};
   border-bottom-right-radius: ${(props) =>
-    props.border === "East" ? " 5px " : ""};
+    props.border === 'East' ? ' 5px ' : ''};
   border-top-right-radius: ${(props) =>
-    props.border === "East" ? " 5px " : ""};
+    props.border === 'East' ? ' 5px ' : ''};
   border-bottom-left-radius: ${(props) =>
-    props.border === "South" ? " 5px " : ""};
+    props.border === 'South' ? ' 5px ' : ''};
   border-bottom-right-radius: ${(props) =>
-    props.border === "South" ? " 5px " : ""};
+    props.border === 'South' ? ' 5px ' : ''};
   border-top-left-radius: ${(props) =>
-    props.border === "West" ? " 5px " : ""};
+    props.border === 'West' ? ' 5px ' : ''};
   border-bottom-left-radius: ${(props) =>
-    props.border === "West" ? " 5px " : ""};
+    props.border === 'West' ? ' 5px ' : ''};
   animation: ${(props) => props.animation} 1s ease-in-out infinite;
 
   /* &:disabled {
@@ -240,7 +240,7 @@ export const MiddeBtn = styled(Btn)`
   border: solid 2px #fff;
 
   &::after {
-    content: "";
+    content: '';
     width: 35px;
     height: 35px;
     background: #000;
@@ -258,7 +258,7 @@ export const MiddeBtn = styled(Btn)`
 
 export const Modal = styled.div`
   background: #fff;
-  display: ${(props) => (props.text !== "" ? "inline-block" : "none")};
+  display: ${(props) => (props.text !== '' ? 'inline-block' : 'none')};
   position: absolute;
   text-align: center;
   border-radius: 10px;
