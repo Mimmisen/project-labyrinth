@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { navigateGame } from '../reducer/game';
 import { keyframes } from 'styled-components';
-import Confetti from './Confetti';
 import uniqid from 'uniqid';
+import Confetti from './Confetti';
+import styled from 'styled-components/macro';
+import { navigateGame } from '../reducer/game';
 import BG2 from './img/bg2.png';
 import BG3 from './img/bg3.png';
 import BG4 from './img/bg4.png';
@@ -24,7 +25,6 @@ import {
   HistoryArrowContainer
 } from './Styling';
 import Loadingspinner from './Loadingspinner';
-import styled from 'styled-components/macro';
 
 const HistoryArrow = styled.img`
   transform: rotate(${(props) => props.rotate});
@@ -60,11 +60,11 @@ const Labyrinth = () => {
   });
 
   const onNavigate = (type, direction) => {
-    //STORE HISTORY, SELECTED STEPS
+    // STORE HISTORY, SELECTED STEPS
     setSelect((prev) => [...prev, direction]);
     // STORE LAST STEP
     setPrevStep(direction);
-    /////////////////////////////////////
+    //
     dispatch(navigateGame(type, direction));
 
     setTimeout(() => setPrevStep(''), 1500);
@@ -112,13 +112,12 @@ const Labyrinth = () => {
 
   const activeBtnAnimation = () => {
     return keyframes`
-			50% {
-				transform: scale(1.05);
-				background-color: #A7E8CE;
-				z-index: 3;
-			}
-			
-		`;
+		50% {
+			transform: scale(1.05);
+			background-color: #A7E8CE;
+			z-index: 3;
+		}
+	`;
   };
 
   // CHANGE BACKGROUND DEPENDING ON THE ROOM
@@ -168,7 +167,7 @@ const Labyrinth = () => {
             key={uniqid()}
             rotate={historyArrow(item)}
             src={arrow}
-            alt='arrows to show history'
+            alt="arrows to show history"
           />
         ))}
       </HistoryArrowContainer>
@@ -193,8 +192,7 @@ const Labyrinth = () => {
                 border={item.direction}
                 position={arrowStyle(item.direction)}
                 onClick={() => onNavigate(item.type, item.direction)}
-                animation={activeBtnAnimation()}
-              >
+                animation={activeBtnAnimation()}>
                 {changeDirectionToIcon(item.direction)}
               </Btn>
             </>
